@@ -16,11 +16,17 @@ pipeline {
         }
 
         stage('Buzz Python') {
+          agent {
+            docker {
+              label 'docker-agent-python' // both label and image
+              image 'devopsjourney1/myjenkinsagents:python'
+            }
+          }
           steps {
             sh 'print("Hello from Python")'
           }
         }
+      }
     }
   }
- }
 }
