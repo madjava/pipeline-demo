@@ -2,12 +2,7 @@ pipeline {
   agent none
   stages {
     stage('Buzz Build') {
-      agent {
-        node {
-          label 'docker-agent-alpine'
-        }
-
-      }
+      agent any
       steps {
         sh './build.sh'
       }
@@ -23,8 +18,8 @@ pipeline {
 
         stage('Buzz Python') {
           agent {
-            node {
-              label 'docker-agent-python'
+            docker {
+              image 'devopsjourney1/myjenkinsagents:python'
             }
 
           }
