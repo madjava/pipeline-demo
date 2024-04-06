@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('Buzz Build') {
       agent any
@@ -17,19 +17,11 @@ pipeline {
         }
 
         stage('Buzz Python') {
-          agent {
-            docker {
-              label 'docker-agent-python'
-            }
-
-          }
           steps {
             sh 'print("Hello from Python")'
           }
         }
-
-      }
     }
-
   }
+ }
 }
