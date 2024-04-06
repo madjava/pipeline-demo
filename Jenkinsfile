@@ -12,21 +12,25 @@ pipeline {
         stage('Buzz Test') {
           steps {
             sh './test-all.sh'
+            echo 'Meesage to console'
           }
         }
 
         stage('Buzz Python') {
           agent {
             docker {
-              label 'docker-agent-python' // both label and image
+              label 'docker-agent-python'
               image 'devopsjourney1/myjenkinsagents:python'
             }
+
           }
           steps {
             sh 'python print("Hello from Python")'
           }
         }
+
       }
     }
+
   }
 }
