@@ -8,27 +8,18 @@ pipeline {
     }
 
     stage('Buzz Test') {
-      parallel {
-        stage('Buzz Test') {
-          steps {
-            sh './test-all.sh'
-            echo 'Meesage to console'
-          }
-        }
+      steps {
+        sh './test-all.sh'
+        echo 'Message to console'
+      }
+    }
 
-        stage('Buzz Python') {
-          agent {
-            docker {
-              label 'docker-agent-python'
-              image 'devopsjourney1/myjenkinsagents:python'
-            }
-
-          }
-          steps {
-            sh 'python print("Hello from Python")'
-          }
-        }
-
+    stage('Buzz When') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'echo In master branch'
       }
     }
 
