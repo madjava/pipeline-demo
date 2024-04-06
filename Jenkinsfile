@@ -19,7 +19,7 @@ pipeline {
         stage('Buzz Python') {
           agent {
             docker {
-              image 'devopsjourney1/myjenkinsagents:python'
+              label 'docker-agent-python'
             }
 
           }
