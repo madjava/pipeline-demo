@@ -9,8 +9,23 @@ pipeline {
     }
 
     stage('Buzz Test') {
-      steps {
-        sh './test-all.sh'
+      parallel {
+        stage('Buzz Test') {
+          steps {
+            sh './test-all.sh'
+          }
+        }
+
+        stage('Testing B') {
+          steps {
+            sh '''sleep 10 
+
+
+&&
+echo done'''
+          }
+        }
+
       }
     }
 
