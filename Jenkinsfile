@@ -4,7 +4,6 @@ pipeline {
     stage('Buzz Build') {
       steps {
         sh './build.sh'
-        archiveArtifacts(artifacts: 'packaged.zip', fingerprint: true)
       }
     }
 
