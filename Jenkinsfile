@@ -23,7 +23,7 @@ pipeline {
             }
           }
           steps {
-            sh 'print("Hello from Python")'
+            sh 'python print("Hello from Python")'
           }
         }
       }
